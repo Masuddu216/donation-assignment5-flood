@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donate Bangladesh</title>
+
+    <!-- Font: Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Font Lexend  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+<!-- Link: Fontawesome CDN -->
+    <script src="https://kit.fontawesome.com/f811dd765f.js" crossorigin="anonymous"></script>
+
+    <!-- Link: TailwindCSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+    </style>
+
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            roboto: ['Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+</script>
+
+</head>
+
+<body class="font-roboto" >
+    <!-- Header Section content -->
+    <header class="sticky top-0 z-50 bg-[#F9F7F3] pb-2" >
+        <section class="mx-auto bg-[#F9F7F3] mb-10">
+        <!-- Navigation Menu Content -->
+        <nav class="w-11/12 flex justify-between items-center  mx-auto pt-5 pb-10 mt-5 mb-12">
+            <div class="">
+                <a class="btn btn-ghost text-base bg-[#B4F461]" href="/index.html">Home</a>
+                </div>
+
+                <div class="flex justify-center items-center gap-2">
+                    <img src="./assets/logo.png" alt="">
+                    <p > <span class="text-black font-bold">Donate Bangladesh</span> </p>
+                </div>
+                
+                <div class="flex gap-1">
+                  <img src="/assets/coin.png" alt="">
+                  <p class="flex gap-1"><span>5500</span> <span>BDT</span></p>
+                </div>
+        
+        </nav>
+
+      </header>  
+        <!-- Two Buttons -->
+</section>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-6">
+        <h2 class="text-2xl font-bold text-left mb-6">Important FAQ <i class="fa-solid fa-question"></i></h2>
+        <div class="faq space-y-4">
+
+            <div class="border rounded-lg overflow-hidden">
+                <div class="faq-question cursor-pointer bg-none text-black p-4 font-semibold">
+                    What is the Document Object Model (DOM)?
+                </div>
+                <div class="faq-answer p-4 bg-none hidden">
+                    The DOM is a programming interface for web documents. <br> It represents the page so that programs can change <br> the document structure, style, and content.
+                </div>
+            </div>
+
+            <div class="border rounded-lg overflow-hidden">
+                <div class="faq-question cursor-pointer bg-none text-black p-4 font-semibold">
+                    How do you select an element from the DOM?
+                </div>
+                <div class="faq-answer p-4 bg-none hidden">
+                    You can select an element from the DOM using methods <br>
+                     like getElementById , querySelector,  getElementsByClassName <br> and getElementByTagName.
+                </div>
+            </div>
+
+            <div class="border rounded-lg overflow-hidden">
+                <div class="faq-question cursor-pointer bg-none text-black p-4 font-semibold">
+                    What is event delegation in the context of the DOM, and why is it useful?
+                </div>
+                <div class="faq-answer p-4 bg-none hidden">
+                    Event delegation is a technique of handling events efficiently <br> by adding a single event listener to a parent element that can handle all <br> events of a particular type for its child elements.
+                </div>
+            </div>
+
+            <div class="border rounded-lg overflow-hidden">
+                <div class="faq-question cursor-pointer bg-none text-black p-4 font-semibold">
+                    How do you manipulate an element’s attributes and styles using the DOM?
+                </div>
+                <div class="faq-answer p-4 bg-none hidden">
+                    You can manipulate an element's attributes and styles  using methods like <br> setAttribute, getAttribute, and by accessing the stylebr  <br> property of DOM elements.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const questions = document.querySelectorAll('.faq-question');
+
+            questions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const answer = question.nextElementSibling;
+                    if (answer.classList.contains('hidden')) {
+                        answer.classList.remove('hidden');
+                    } else {
+                        answer.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
