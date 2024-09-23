@@ -1,117 +1,72 @@
-const menuBtn = document.getElementById("menu-btn");
-const mobileMenuEl = document.getElementById("mobileMenu");
-const seatSelectedEl = document.getElementById("selected-seat")
-const totalPriceEl = document.getElementById("total-price")
-const availableSeatEl = document.getElementById("available-seat")
-const couponInputField = document.getElementById("coupon-field")
-const couponBtnEl = document.getElementById("coupon-btn")
-const grandTotalEl = document.getElementById("grand-total")
-const btnContinue = document.getElementById('btn-continue');
-const totalBookedEl = document.getElementById("total-booked")
-const bookedSectionDefaultEl = document.getElementById("default-text")
+// Function to handle the donation logic
+function donate(inputId, totalId, availableId, buttonId, cause) {
+    const inputField = document.getElementById(inputId);
+    const totalField = document.getElementById(totalId);
+    const availableField = document.getElementById(availableId);
+    const button = document.getElementById(buttonId);
 
-// Menu icons
-menuBtn.addEventListener('click', function () {
-    menuBtn.children[0].classList.toggle("hidden")
-    const menuCloseBtn = document.getElementById("close-icon");
-    menuCloseBtn.classList.toggle("hidden")
-    mobileMenuEl.classList.toggle("hidden")
-    mobileMenuEl.classList.toggle("flex")
-})
+    button.addEventListener('click', function () {
+        const donationAmount = parseFloat(inputField.value);
+        const availableAmount = parseFloat(availableField.textContent);
+        const totalDonated = parseFloat(totalField.textContent);
 
-let selectedSeat = []
-let totalPrice = 0;
-
-function handleSelectSeat(event) {
-    const value = event.innerText
-    if (selectedSeat.includes(value)) {
-        return alert("Seat already added")
-    } else {
-        if (selectedSeat.length < 4) {
-            event.classList.add("bg-primary")
-            event.classList.add("text-white")
-
-            selectedSeat.push(value);
-            totalPrice += 550;
-
-            totalPriceEl.innerText = totalPrice.toFixed(2);
-
-            // count seat
-            totalBookedEl.innerText = selectedSeat.length
-
-            // decrease available seat
-            const availableSeatValue = parseFloat(availableSeatEl.innerText);
-            const newAvailableSeatValue = availableSeatValue - 1;
-            availableSeatEl.innerText = newAvailableSeatValue
-
-            bookedSectionDefaultEl.classList.add("hidden")
-
-            seatSelectedEl.innerHTML += `
-         <li class="text-base font-normal flex justify-between">
-            <span>${ value }</span>
-            <span>Economy</span>
-            <span>550</span>
-        </li>
-        `
-
-            // active coupon button if 4 seat is booked
-            if (selectedSeat.length > 3) {
-                couponInputField.removeAttribute("disabled")
-                couponBtnEl.removeAttribute('disabled')
-            }
-        } else {
-            return alert("Maximum seat added")
+        // Validate input (must be a positive number)
+        if (isNaN(donationAmount) || donationAmount <= 0) {
+            alert('Invalid Amount');
+            return;
         }
-    }
+
+        // Update total donations and available amount
+        totalField.textContent = totalDonated + donationAmount;
+        availableField.textContent = availableAmount - donationAmount;
+
+        // Show success message
+        showModal();
+
+        // Add donation history
+        addToHistory(donationAmount, cause);
+    });
 }
 
-document.getElementById("coupon-btn").addEventListener('click', function () {
-    const couponInputValue = couponInputField.value;
-    let couponSave = 0;
+// Function to show the modal
+function showModal() {
+    const modal = document.getElementById('my_modal_1');
+    modal.showModal();
+}
 
-    if (couponInputValue !== "NEW50" && couponInputValue !== "Couple 20") {
-        alert("Your Provided Coupon Code Is Not Valid 😕")
-        return couponInputField.value = ""
-
-    }
-
-    if (couponInputValue === "NEW50") {
-        couponSave = totalPrice * 0.15;
-
-    } else if (couponInputValue === "Couple 20") {
-        couponSave = totalPrice * 0.20;
-
-    }
-    // hide coupon input field and apply button
-    couponInputField.classList.add("hidden")
-    couponBtnEl.classList.add("hidden")
-
-    const showCouponPriceEl = document.getElementById("show-coupon-price");
-    showCouponPriceEl.innerHTML = `
-    <p>Discount</p>
-    <p><span>- BDT: </span> <span id="total-price">${ couponSave.toFixed(2) }</span></p>
-    `
-
-
-    const grandTotalValue = totalPrice - couponSave;
-    grandTotalEl.innerText = grandTotalValue.toFixed(2);
-
-})
-
-// active next but by adding phone number
-const phoneNumberEl = document.getElementById("phone-number")
-const nextButton = document.getElementById("nextButton")
-
-phoneNumberEl.addEventListener('input', function (e) {
-    const inputValue = e.target.value;
-    if (inputValue.length >= 11) {
-        nextButton.removeAttribute("disabled")
-    } else {
-        nextButton.setAttribute("disabled", true);
-    }
+// Function to close the modal
+document.getElementById('btn-continue').addEventListener('click', function () {
+    const modal = document.getElementById('my_modal_1');
+    modal.close();
 });
 
-// Reload the window
-btnContinue.addEventListener('click', function () {
-    window.location.reload();
-});
+// Function to add donation to history
+function addToHistory(amount, cause) {
+    const history = document.getElementById('activate-donation-history');
+    const now = new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' });
+    const newHistoryItem = document.createElement('p');
+    newHistoryItem.textContent = `Donated ${amount} BDT for ${cause} on ${now}`;
+    history.appendChild(newHistoryItem);
+}
+
+// Set up donation handling for Noakhali Flood
+let noakhaliInput = 'input-amount-forNoakhali-flood'; // The input field where the user enters the donation amount
+let noakhaliTotal = 'noakhali-donated-amountTotal';   // The element showing the total donated for Noakhali
+let availableAmount = 'availableAmount';              // The element showing available amount
+let noakhaliButton = 'click-donate-forNoakhali';      // The button that the user clicks to donate for Noakhali
+let noakhaliCause = 'Noakhali Flood';                 // The cause name
+donate(noakhaliInput, noakhaliTotal, availableAmount, noakhaliButton, noakhaliCause); // Call the donation function
+
+// Set up donation handling for Feni Flood
+let feniInput = 'input-amount-forFeni-flood'; // The input field for Feni
+let feniTotal = 'feni-donated-amountTotal';   // The total donated amount for Feni
+let feniButton = 'click-donate-forFeni';      // The button for Feni donations
+let feniCause = 'Feni Flood';                 // The cause name for Feni
+donate(feniInput, feniTotal, availableAmount, feniButton, feniCause); // Call the donation function
+
+// Set up donation handling for Quota Movement
+let quotaInput = 'input-amount-forQuota-movement';  // The input field for Quota Movement
+let quotaTotal = 'quota-donated-totalAmount';       // The total amount donated for Quota Movement
+let quotaButton = 'click-donate-forQuota-movement'; // The button for Quota Movement donations
+let quotaCause = 'Quota Movement';                  // The cause name for Quota Movement
+donate(quotaInput, quotaTotal, availableAmount, quotaButton, quotaCause); // Call the donation function

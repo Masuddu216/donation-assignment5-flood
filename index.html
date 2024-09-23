@@ -39,10 +39,10 @@
 
 <body class="font-roboto" >
     <!-- Header Section content -->
-    <header class="sticky top-0 z-50  pb-2" >
+    <header class="md:sticky top-0 z-50  pb-2" >
         <section class="mx-auto bg-[#F9F7F3] mb-10">
         <!-- Navigation Menu Content -->
-        <nav class="w-11/12 flex justify-between items-center  mx-auto pt-5 pb-10 mt-5 mb-12">
+        <nav id="navbar" class="w-11/12  items-center justify-center gap-5 md:flex justify-between items-center  mx-auto pt-5 pb-10 mt-5 mb-12">
             <div class="">
                 <a class="btn btn-ghost text-base bg-[#B4F461]" href="index2.html">Blog</a>
                 </div>
@@ -54,7 +54,7 @@
                 
                 <div class="flex gap-1">
                   <img src="coin.png" alt="">
-                  <p class="flex gap-1"><span>5500</span> <span>BDT</span></p>
+                  <p class="flex gap-1"><span id="availableAmount">95500</span> <span>BDT</span></p>
                 </div>
         
         </nav>
@@ -62,22 +62,34 @@
         
         <!-- Two Buttons -->
 </section>
-<section class=" text-center mb-10 ">
+<section class="  gap-5 text-center md:text-center mb-10 ">
     <button
-    class="btn text-gray-500 bg-none px-10 drop-shadow-lg border-gray-700 hover:border-gray-200 hover:text-black font-bold  hover:bg-[#B4F461]">
+     id="activate-donation-page" class=" btn text-gray-500 bg-none px-10 drop-shadow-lg border-gray-700 hover:border-gray-200 hover:text-black font-bold  hover:bg-[#B4F461]">
     Donation
     </button>
 
+
+    
     <button
-    class=" ml-5 btn text-gray-500 bg-none px-10 drop-shadow-lg border-gray-700 hover:border-gray-200 hover:text-black font-bold  hover:bg-[#B4F461]">
-    Donation
+    id="donation-history" onclick="addToHistory(amount, cause)" class=" ml-5 btn text-gray-500 bg-none px-10 drop-shadow-lg border-gray-700 hover:border-gray-200 hover:text-black font-bold  hover:bg-[#B4F461]">
+    History
     </button>
- 
+    </section>
+  
+    
+    <div id="history-list" class="hidden text-center items-center mx-auto "> 
+
+      <h1 class="text-center text-4xl font-bold " > Donation History Details </h1>
+    <p class=""> </p>
+    </div>
+  
 </section>
+ 
+
 
 </header>
 
-    <main class="w-11/12 mx-auto ">
+    <main id="main-section" class=" w-11/12 mx-auto ">
 <!-- cart-01 starts here -->
         <div class="mb-5 mx-auto flex justify-between items-center gap-5 p-5 drop-shadow-lg border border-gray-200 rounded-lg">
            <img class=" w-screen max-h-[350px] " src="noakhali.png" alt="" >
@@ -85,7 +97,7 @@
             <div class="py-8"> 
                 <button class="flex gap-2 bg-gray-200 px-7 py-3 rounded-md mb-5">
                     <img src="coin.png" alt="">
-                    <p class="flex gap-1 text-base"><span>0</span> <span>BDT</span></p>
+                    <p class="flex gap-1 text-base"><span id="noakhali-donated-amountTotal">0</span> <span>BDT</span></p>
                   </button>
                   <div>
                     <h3 class="font-bold text-base mb-3">Donate for Flood at Noakhali, Bangladesh</h3>
@@ -93,11 +105,11 @@
                   </div>
                   <div>
                     <label class="form-control my-3">
-                        <input id="write-amount" type="number" placeholder="Write donation amount"
+                        <input id="input-amount-forNoakhali-flood" type="number" placeholder="Write donation amount"
                             class="input input-bordered w-full" />
                     </label>
-                    <button 
-                    class="w-full btn drop-shadow-lg bg-[#B4F461] border-gray-200 hover:border-gray-200 hover:text-black font-bold  hover:bg-[#89ef04]">
+                    <button
+                   id="click-donate-forNoakhali" class="w-full btn drop-shadow-lg bg-[#B4F461] border-gray-200 hover:border-gray-200 hover:text-black font-bold  hover:bg-[#89ef04]">
                     Donate Now
                 </button>
 
@@ -113,7 +125,7 @@
      <div class="py-8"> 
          <button class="flex gap-2 bg-gray-200 px-7 py-3 rounded-md mb-5">
              <img src="coin.png" alt="">
-             <p class="flex gap-1 text-base"><span>600</span> <span>BDT</span></p>
+             <p class="flex gap-1 text-base"><span id="feni-donated-amountTotal">600</span> <span>BDT</span></p>
            </button>
            <div>
              <h3 class="font-bold text-base mb-3">Donate for Flood Relief in Feni,Bangladesh</h3>
@@ -121,11 +133,11 @@
            </div>
            <div>
              <label class="form-control my-3">
-                 <input id="write-amount" type="number" placeholder="Write donation amount"
+                 <input id="input-amount-forFeni-flood" type="number" placeholder="Write donation amount"
                      class="input input-bordered w-full" />
              </label>
-             <button 
-             class="w-full btn drop-shadow-lg bg-[#B4F461] border-gray-200 hover:border-gray-200 hover:text-black font-bold  hover:bg-[#89ef04]">
+             <button
+             id="click-donate-forFeni" class="w-full btn drop-shadow-lg bg-[#B4F461] border-gray-200 hover:border-gray-200 hover:text-black font-bold  hover:bg-[#89ef04]">
              Donate Now
          </button>
 
@@ -141,7 +153,7 @@
      <div class="py-8"> 
          <button class="flex gap-2 bg-gray-200 px-7 py-3 rounded-md mb-5">
              <img src="coin.png" alt="">
-             <p class="flex gap-1 text-base"><span>2400</span> <span>BDT</span></p>
+             <p class="flex gap-1 text-base"><span id="quota-donated-totalAmount">2400</span> <span>BDT</span></p>
            </button>
            <div>
              <h3 class="font-bold text-base mb-3">Aid for Injured in the Quota Movement</h3>
@@ -149,23 +161,45 @@
            </div>
            <div>
              <label class="form-control my-3">
-                 <input id="write-amount" type="number" placeholder="Write donation amount"
+                 <input id="input-amount-forQuota-movement" type="number" placeholder="Write donation amount"
                      class="input input-bordered w-full" />
              </label>
-             <button 
-             class="w-full btn drop-shadow-lg bg-[#B4F461] border-gray-200 hover:border-gray-200 hover:text-black font-bold  hover:bg-[#89ef04]">
+             <button
+             id="click-donate-forQuota-movement" class="w-full btn drop-shadow-lg bg-[#B4F461] border-gray-200 hover:border-gray-200 hover:text-black font-bold  hover:bg-[#89ef04]">
              Donate Now
          </button>
 
            </div>                 
      </div>
  </div>
+
+ <dialog id="modalForAll" class="modal">
+  <form method="dialog"
+      class="modal-box px-5 py-10 flex flex-col justify-center items-center">
+      <i class="fa-regular fa-circle-check text-6xl text-primary"></i>
+      <h3 class="font-bold text-2xl text-primary my-5">
+          Congrates!
+      </h3>
+      <div class="text-center">
+          <p class="font-bold">
+              You have donated for Humankind <br> <span class="text-black ">Successfully</span>
+          </p>
+
+
+      </div>
+    
+      <button id="btn-continue"
+          class="btn bg-primary px-16 btn-md hover:bg-black transition-colors ease-in duration-300 text-white">
+          Close confirmation
+      </button>
+  </form>
+</dialog>
 <!-- cart-03 ends here -->
 
     </main>
 
     <!-- Script JS file link -->
-    <script src="app.js"></script>
+    <script src="practice.js"></script>
 </body>
 
 </html>
