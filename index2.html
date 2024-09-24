@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 
@@ -16,33 +17,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
 <!-- Link: Fontawesome CDN -->
-    <script src="https://kit.fontawesome.com/f811dd765f.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6e61265ac4.js" crossorigin="anonymous"></script>
+
 
     <!-- Link: TailwindCSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
-    </style>
-
-<script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            roboto: ['Roboto', 'sans-serif'],
+    
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              lexend: ['Lexend', 'sans-serif'],
+            }
           }
         }
       }
-    }
-</script>
+  </script>
 
 </head>
 
 <body class="font-lexend" >
     <!-- Header Section content -->
-    <header class="sticky top-0 z-50 bg-[#F9F7F3] pb-2" >
+    <header class="md:sticky top-0 z-50  pb-2 bg-gradient-to-b from-[#243c5a] to-transparent" >
         <section class="mx-auto bg-[#F9F7F3] mb-10">
         <!-- Navigation Menu Content -->
         <nav id="navbar" class="text-center grid text-center items-center justify-center md:w-11/12   gap-5 md:flex  md:justify-between items-center  mx-auto pt-5 pb-10 mt-5 mb-12">
@@ -55,9 +54,9 @@
                     <p > <span class="text-black font-bold">Donate Bangladesh</span> </p>
                 </div>
                 
-                <div class="flex gap-1">
-                    <img src="coin.png" alt="">
-                    <p class="flex gap-1"><span id="availableAmount">95500</span> <span>BDT</span></p>
+                <div class="flex gap-2 items-center text-center justify-center">
+                    <img class="rounded-lg  " src="coin.png" alt="">
+                    <p class="flex gap-1 text-black font-bold"><span id="availableAmount">95500</span> <span>BDT</span></p>
                   </div>
         
         </nav>
@@ -68,7 +67,7 @@
 <body class="bg-gray-100">
 
     <div class="container mx-auto p-6">
-        <h2 class="text-2xl font-bold text-left mb-6">Important FAQ <i class="fa-solid fa-question"></i></h2>
+        <h2 class="text-2xl font-bold text-left mb-6">Important FAQ <i class="fa-solid fa-question"></i><i class="fa-solid fa-question"></i></h2> 
         <div class="faq space-y-4">
 
             <div class="border rounded-lg overflow-hidden">

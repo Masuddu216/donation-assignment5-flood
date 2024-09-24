@@ -17,7 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
 <!-- Link: Fontawesome CDN -->
-    <script src="https://kit.fontawesome.com/f811dd765f.js" crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/6e61265ac4.js" crossorigin="anonymous"></script>
 
     <!-- Link: TailwindCSS CDN -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
@@ -39,7 +40,7 @@
 
 <body class="font-lexend" >
     <!-- Header Section content -->
-    <header class="md:sticky top-0 z-50  pb-2 bg-gradient-to-b from-transparent to-slate-100" >
+    <header class="md:sticky top-0 z-50  pb-2 bg-gradient-to-b from-[#243c5a] to-transparent" >
         <section class="w-full mx-auto bg-[#F9F7F3] mb-10">
         <!-- Navigation Menu Content -->
         <nav id="navbar" class="text-center grid text-center items-center justify-center md:w-11/12   gap-5 md:flex  md:justify-between items-center  mx-auto pt-5 pb-10 mt-5 mb-12">
@@ -52,9 +53,9 @@
                     <p <span class="text-black font-bold">Donate Bangladesh</span></p>
                 </div>
                 
-                <div class="flex gap-1">
-                  <img src="coin.png" alt="">
-                  <p class="flex gap-1"><span id="availableAmount">95500</span> <span>BDT</span></p>
+                <div class="flex gap-2 items-center text-center justify-center">
+                  <img class="rounded-lg  " src="coin.png" alt="">
+                  <p class="flex gap-1 text-black font-bold"><span id="availableAmount">95500</span> <span>BDT</span></p>
                 </div>
         
         </nav>
@@ -90,7 +91,7 @@
 
 </header>
 
-    <main id="main-section" class=" w-11/12 mx-auto ">
+    <main id="main-section" class=" w-11/12 mx-auto bg-white ">
 <!-- cart-01 starts here -->
         <div class=" grid md:mb-5 mx-auto md:flex md:justify-between md:items-center gap-5 p-5 drop-shadow-lg border border-gray-200 rounded-lg">
            <img class=" w-screen max-h-[350px] " src="noakhali.png" alt="" >
@@ -177,8 +178,8 @@
  <dialog id="modalForAll" class="modal">
   <form method="dialog"
       class="modal-box px-5 py-10 flex flex-col justify-center items-center">
-      <i class="fa-regular fa-circle-check text-6xl text-primary"></i>
-      <h3 class="font-bold text-2xl text-primary my-5">
+      <i class="fa-regular fa-circle-check text-6xl text-secondary"></i>
+      <h3 class="font-bold text-2xl text-secondary my-5">
           Congrates!
       </h3>
       <div class="text-center">
@@ -190,7 +191,7 @@
       </div>
     
       <button id="btn-continue"
-          class="btn bg-primary px-16 btn-md hover:bg-black transition-colors ease-in duration-300 text-white">
+          class="btn btn-primary text-white px-16 btn-md hover:bg-[#89ef04] hover:text-black hover:font-bold transition-colors ease-in duration-300 text-black font-bold">
           Close confirmation
       </button>
   </form>
