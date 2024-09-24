@@ -47,11 +47,12 @@ function handleDonation(inputAmount, totalAmount) {
 }
 
 function addDonationToHistory(amount) {
+    let currentAvailableAmount = parseInt(availableAmount.innerText);
     const historySection = document.getElementById("history-list");
     const date = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
 
     const newHistoryItem = document.createElement("p");
-    newHistoryItem.textContent = `Donated ${amount} BDT on ${date}`;
+    newHistoryItem.textContent = `Donated Tk. ${amount} and Current Balance is Tk. ${currentAvailableAmount} as on ${date}`;
     historySection.appendChild(newHistoryItem);
 }
 
